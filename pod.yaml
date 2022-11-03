@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: cm-test-pod
+  namespace: cm-test-ns
+spec:
+  restartPolicy: Never
+  shareProcessNamespace: true
+  serviceAccountName: cm-test-sa
+  containers:
+  - name: cm-test-cnt
+    image: quay.io/dosman/cm-test:latest
+    command: ["/usr/local/bin/cm-test"]
+#   command: ["sleep", "infinity"]
+    imagePullPolicy: Always
+    securityContext:
+      runAsUser: 1000 # 0 #
+      readOnlyRootFilesystem: true
+      capabilities:
+        drop:
+          - ALL

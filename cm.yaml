@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cm-test-cm
+  namespace: cm-test-ns
+data:
+  cm-test-value: "3"
