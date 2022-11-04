@@ -12,6 +12,9 @@ spec:
     image: quay.io/dosman/cm-test:latest
     command: ["/usr/local/bin/cm-test"]
 #   command: ["sleep", "infinity"]
+    env:
+    - name: CM_TEST_DELAY
+      value: "5"
     imagePullPolicy: Always
     securityContext:
       runAsUser: 1000 # 0 #
