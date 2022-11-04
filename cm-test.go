@@ -63,7 +63,7 @@ func main() {
       Name:      CM_TEST_NAME,
       Namespace: CM_TEST_NAMESPACE,
       Annotations: map[string]string{
-        CM_TEST_IT_KEY: string(iteration),
+        CM_TEST_IT_KEY: strconv.Itoa(iteration),
       },
     },
   }, metav1.CreateOptions{})
@@ -85,7 +85,7 @@ func main() {
 
     // Update the iteration in the Annotation section
     iteration++
-    cur_cm.ObjectMeta.Annotations[CM_TEST_IT_KEY] = string(iteration)
+    cur_cm.ObjectMeta.Annotations[CM_TEST_IT_KEY] = strconv.Itoa(iteration)
     _, err = clientset.CoreV1().ConfigMaps(CM_TEST_NAMESPACE).Update(context.TODO(), cur_cm, metav1.UpdateOptions{})
     if err != nil {
       panic(err.Error())
